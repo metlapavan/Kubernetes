@@ -57,6 +57,15 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outfor
    COnfiguring Networking with flannel :
    
    flannel is network plugin
-   
+  run this two commands on every node and master to make cluster more functional 
+echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+
+installation of flannel on master :
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
+
+kubectl get pods -n kube-system
+sudo systemctl status kubelet
+
 
 
